@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+    Document   : catalogo
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/main-template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:param name="titulo" value="Promocion" />
+    <ui:define name="body">
+        
+        <h:form>
+                <div align="right" style="padding-right: 10px">
+                    <h:commandButton style="background: transparent" image="./resources/img/pag/atras.png" action="menu.xhtml"/>
+                </div>
+        </h:form>
+        <h:outputText id="linkHeader"
+                          value="Administración de Muebles" style="color:white"/>
+        <p:fieldset legend="Crear Promocion">
+        <h:form>
+            <!-- Panel para agregar un nuevo mueble -->
+            <h:panelGroup>
+                <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
+                    <h:outputLabel for="TxtReferencia"
+                                     value="Descripcion"/>
+                    <h:inputText id="TxtReferencia"
+                                   size="20"
+                                   maxlength="20"
+                                   label="Referencia"
+                                   value="#{catalogoBean.muebleSelec.promocion.descripcion}"
+                                   required="true"
+                                   >
+                        <f:validateLength minimum="1"/>
+                    </h:inputText>
+                    <h:message id="nameMsg" for="TxtReferencia" />
+                </h:panelGrid>
+                   
+                <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
+                    <h:outputLabel for="TxtNombre"
+                                     value="Fecha Inicio" />
+                    <h:inputText id="TxtNombre"
+                                   maxlength="20"
+                                   size="20"
+                                   value="#{catalogoBean.muebleSelec.promocion.fechaIni}"
+                                   label="Nombre"
+                                   required="true">
+                        <f:validateLength minimum="1"/>
+                    </h:inputText>
+                    <h:message id="pwMsg" for="TxtNombre" />
+                </h:panelGrid>
+                
+                <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
+                    <h:outputLabel for="TxtPrecio"
+                                     value="Fecha Fin" />
+                    <h:inputText id="TxtPrecio"
+                                   maxlength="20"
+                                   size="20"
+                                   value="#{catalogoBean.muebleSelec.promocion.fechaFin}"
+                                   label="Precio"
+                                   required="true">
+                        <f:validateLength minimum="1"/>
+                    </h:inputText>
+                    <h:message id="precioMsg" for="TxtPrecio" />
+                </h:panelGrid>
+                
+               
+                <h:commandButton value="Crear" action="#{catalogoBean.guardarPromocion}" />
+                
+            </h:panelGroup>
+            
+        </h:form>
+        </p:fieldset>     
+        
+
+    </ui:define>
+
+
+</ui:composition>
