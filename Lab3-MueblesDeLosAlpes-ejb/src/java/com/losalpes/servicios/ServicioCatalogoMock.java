@@ -14,12 +14,24 @@ package com.losalpes.servicios;
 import com.losalpes.entities.Mueble;
 import com.losalpes.entities.Promocion;
 import com.losalpes.excepciones.OperacionInvalidaException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+import javax.jms.Topic;
 
 /**
  * Implementacion de los servicios del catálogo de muebles que se le prestan al sistema.
@@ -37,6 +49,21 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote,IServic
      */
     @EJB
     private IServicioPersistenciaMockLocal persistencia;
+    
+    /*
+    @Resource(mappedName="jms/promocionTopicFactory")
+    private ConnectionFactory connectionFactory;
+ 
+    @Resource(mappedName="jms/promocionTopic")
+    private Topic topic;
+    */
+    @Resource(mappedName="jms/cambioDeCargoTopicFactory")
+    private ConnectionFactory connectionFactory;
+ 
+    @Resource(mappedName="jms/cambioDeCargoTopic")
+    private Topic topic;
+    
+    Promocion promocionEstablecida;
 
     //-----------------------------------------------------------
     // Constructor
@@ -128,12 +155,61 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote,IServic
      */
     @Override
     public void agregarPromocionMueble(Promocion promocion, long idMueble) {        
-        List<Mueble> lista1 = this.darMuebles();
+        //List<Mueble> lista1 = this.darMuebles();
         Mueble mueble = (Mueble) persistencia.findById(Mueble.class, idMueble);
         mueble.setPromocion(promocion);
         persistencia.update(mueble);
-        List<Mueble> lista2 = this.darMuebles();
+        promocionEstablecida = promocion;
+        //List<Mueble> lista2 = this.darMuebles(); 
         
-        
+        try {
+            publicarPromocion();
+        } catch (JMSException ex) {
+            Logger.getLogger(ServicioCatalogoMock.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }
+    
+    private void publicarPromocion() throws JMSException 
+     {
+        Connection connection = connectionFactory.createConnection();
+        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        MessageProducer messageProducer = session.createProducer((Destination) topic);
+        try 
+        {
+            messageProducer.send(crearMensajePromocion(session));
+        } 
+        catch (JMSException ex) 
+        {
+            Logger.getLogger(ServicioVendedoresMock.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        finally 
+        {
+            if (session != null) 
+            {
+                try 
+                {
+                    session.close();
+                } 
+                catch (JMSException e) 
+                {
+                    Logger.getLogger(this.getClass().getName()).log(Level.WARNING, "Error cerrando la"
+                            + " sesión", e);
+                }
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+    }
+    
+    private Message crearMensajePromocion(Session session) throws JMSException
+    {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");        
+        String msg = "Descripción: " + promocionEstablecida.getDescripcion() + "\n";
+        msg += "Fecha Inicio: " + df.format(promocionEstablecida.getFechaInicio()) + "\n";
+        msg += "Salario: " + df.format(promocionEstablecida.getFechaFin()) + "\n";
+        TextMessage tm = session.createTextMessage();
+        tm.setText(msg);
+        return tm;
     }
 }

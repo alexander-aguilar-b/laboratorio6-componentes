@@ -41,21 +41,27 @@
                 </h:panelGrid>
                    
                 <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
+                    <!--
                     <h:outputLabel for="TxtFechaInicio"
                                      value="Fecha Inicio" />
                     <h:inputText id="TxtFechaInicio"                                   
-                                   value="#{catalogoBean.promocion.fechaIni}"
+                                 value="#{catalogoBean.promocion.fechaInicio}"
                                    label="Nombre"
                                    required="true">
                         <f:convertDateTime pattern="yyyy-MM-dd"/>
                         <f:validateLength minimum="1"/>
+                    
                     </h:inputText>
                     <h:message id="pwMsg" for="TxtFechaInicio" />
+                    -->
+                    <p:outputLabel for="fechaInicio" value="Fecha inicio" />
+                    <p:calendar id="fechaInicio" value="#{catalogoBean.promocion.fechaInicio}"  pattern="dd/MM/yyyy" required="true" requiredMessage="Ingrese una fecha" />
                 </h:panelGrid>
                 
                 <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
+                    <!--
                     <h:outputLabel for="TxtFechaFin"
-                                     value="Fecha Fin" />
+                                     value="Fecha Fin" />                    
                     <h:inputText id="TxtFechaFin"                                   
                                    value="#{catalogoBean.promocion.fechaFin}"
                                    label="Precio"
@@ -64,7 +70,11 @@
                         <f:validateLength minimum="1"/>
                     </h:inputText>
                     <h:message id="precioMsg" for="TxtPrecio" />
-                </h:panelGrid>                             
+                
+                    -->
+                    <p:outputLabel for="fechaFin" value="Fecha Fin" />
+                    <p:calendar id="fechaFin" value="#{catalogoBean.promocion.fechaFin}"  pattern="dd/MM/yyyy" required="true" requiredMessage="Ingrese una fecha" />
+                    </h:panelGrid>       
                 <h:commandButton value="Crear" action="#{catalogoBean.guardarPromocion}" />                
             </h:panelGroup>
         </h:form>

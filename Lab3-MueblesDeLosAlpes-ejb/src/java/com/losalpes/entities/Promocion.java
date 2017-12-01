@@ -14,7 +14,7 @@ import java.util.Date;
 public class Promocion {
     private String descripcion;
     
-    private Date fechaIni;
+    private Date fechaInicio;
     
     private Date fechaFin;
     
@@ -23,7 +23,7 @@ public class Promocion {
     }
     public Promocion(String descripcion, Date fechaIni, Date fechaFin) {
         this.descripcion = descripcion;
-        this.fechaIni = fechaIni;
+        this.fechaInicio = fechaIni;
         this.fechaFin = fechaFin;
     } 
     
@@ -35,12 +35,12 @@ public class Promocion {
         this.descripcion = descripcion;
     }
 
-    public Date getFechaIni() {
-        return fechaIni;
+    public Date getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setFechaIni(Date fechaIni) {
-        this.fechaIni = fechaIni;
+    public void setFechaInicio(Date fechaIni) {
+        this.fechaInicio = fechaIni;
     }
 
     public Date getFechaFin() {
