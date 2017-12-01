@@ -12,7 +12,7 @@
     <ui:param name="titulo" value="Promocion" />
     <ui:define name="body">
         
-        <h:form>
+        <h:form>            
                 <div align="right" style="padding-right: 10px">
                     <h:commandButton style="background: transparent" image="./resources/img/pag/atras.png" action="menu.xhtml"/>
                 </div>
@@ -21,61 +21,53 @@
                           value="Administración de Muebles" style="color:white"/>
         <p:fieldset legend="Crear Promocion">
         <h:form>
+            <f:metadata>
+                <f:viewParam name="id" value="#{catalogoBean.idMuebleSelec}" />
+            </f:metadata>
             <!-- Panel para agregar un nuevo mueble -->
             <h:panelGroup>
                 <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
-                    <h:outputLabel for="TxtReferencia"
+                    <h:outputLabel for="TxtDescripcion"
                                      value="Descripcion"/>
-                    <h:inputText id="TxtReferencia"
+                    <h:inputText id="TxtDescripcion"
                                    size="20"
                                    maxlength="20"
                                    label="Referencia"
-                                   value="#{catalogoBean.muebleSelec.promocion.descripcion}"
-                                   required="true"
-                                   >
+                                   value="#{catalogoBean.promocion.descripcion}"
+                                   required="true">
                         <f:validateLength minimum="1"/>
                     </h:inputText>
-                    <h:message id="nameMsg" for="TxtReferencia" />
+                    <h:message id="nameMsg" for="TxtDescripcion" />
                 </h:panelGrid>
                    
                 <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
-                    <h:outputLabel for="TxtNombre"
+                    <h:outputLabel for="TxtFechaInicio"
                                      value="Fecha Inicio" />
-                    <h:inputText id="TxtNombre"
-                                   maxlength="20"
-                                   size="20"
-                                   value="#{catalogoBean.muebleSelec.promocion.fechaIni}"
+                    <h:inputText id="TxtFechaInicio"                                   
+                                   value="#{catalogoBean.promocion.fechaIni}"
                                    label="Nombre"
                                    required="true">
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
                         <f:validateLength minimum="1"/>
                     </h:inputText>
-                    <h:message id="pwMsg" for="TxtNombre" />
+                    <h:message id="pwMsg" for="TxtFechaInicio" />
                 </h:panelGrid>
                 
                 <h:panelGrid width="100px" columns="1" columnClasses="pnlGrdClass, pnlGrdClass, pnlGrdClassLong">
-                    <h:outputLabel for="TxtPrecio"
+                    <h:outputLabel for="TxtFechaFin"
                                      value="Fecha Fin" />
-                    <h:inputText id="TxtPrecio"
-                                   maxlength="20"
-                                   size="20"
-                                   value="#{catalogoBean.muebleSelec.promocion.fechaFin}"
+                    <h:inputText id="TxtFechaFin"                                   
+                                   value="#{catalogoBean.promocion.fechaFin}"
                                    label="Precio"
                                    required="true">
+                        <f:convertDateTime pattern="yyyy-MM-dd"/>
                         <f:validateLength minimum="1"/>
                     </h:inputText>
                     <h:message id="precioMsg" for="TxtPrecio" />
-                </h:panelGrid>
-                
-               
-                <h:commandButton value="Crear" action="#{catalogoBean.guardarPromocion}" />
-                
+                </h:panelGrid>                             
+                <h:commandButton value="Crear" action="#{catalogoBean.guardarPromocion}" />                
             </h:panelGroup>
-            
         </h:form>
         </p:fieldset>     
-        
-
     </ui:define>
-
-
 </ui:composition>

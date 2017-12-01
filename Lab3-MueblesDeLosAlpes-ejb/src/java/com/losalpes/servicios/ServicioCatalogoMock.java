@@ -128,7 +128,12 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote,IServic
      */
     @Override
     public void agregarPromocionMueble(Promocion promocion, long idMueble) {        
+        List<Mueble> lista1 = this.darMuebles();
         Mueble mueble = (Mueble) persistencia.findById(Mueble.class, idMueble);
         mueble.setPromocion(promocion);
+        persistencia.update(mueble);
+        List<Mueble> lista2 = this.darMuebles();
+        
+        
     }
 }

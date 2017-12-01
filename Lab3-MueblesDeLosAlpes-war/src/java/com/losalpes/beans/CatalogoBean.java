@@ -90,6 +90,22 @@ public class CatalogoBean implements Serializable
     {
         this.mueble = mueble;
     }
+    
+    public long getIdMuebleSelec() {
+        return idMuebleSelec;
+    }
+
+    public void setIdMuebleSelec(long idMuebleSelec) {
+        this.idMuebleSelec = idMuebleSelec;
+    }
+    
+    public Promocion getPromocion() {
+        return promocion;
+    }
+
+    public void setPromocion(Promocion promocion) {
+        this.promocion = promocion;
+    }
 
     /**
      * Devuelve una lista con todos los muebles del sistema
@@ -118,13 +134,15 @@ public class CatalogoBean implements Serializable
      * Elimina un mueble del sistema
      * @param evento Evento que tiene como parámetro el ID del mueble
      */
-    public void eliminarMueble(ActionEvent evento)
+    public String eliminarMueble(ActionEvent evento)
     {
         FacesContext context = FacesContext.getCurrentInstance();
         Map map = context.getExternalContext().getRequestParameterMap();
         long inventoryId = Long.parseLong((String) map.get("muebleId"));
 
         catalogo.eliminarMueble(inventoryId);
+        
+        return "promocion";
     }
     
     /**
@@ -151,18 +169,26 @@ public class CatalogoBean implements Serializable
         mueble=new Mueble();
     }
     
+    public void eliminarMueble1(ActionEvent evento)
+    {
+        FacesContext context = FacesContext.getCurrentInstance();
+        Map map = context.getExternalContext().getRequestParameterMap();
+        long inventoryId = Long.parseLong((String) map.get("muebleId"));
+
+        catalogo.eliminarMueble(inventoryId);
+    }
+    
     /**
      * Crea una nueva promocion
      * @param evento
      * @return 
      */
-    public String crearPromocion(ActionEvent evento)
-    {
+    public String crearPromocion()
+    {        
         FacesContext context = FacesContext.getCurrentInstance();
         Map map = context.getExternalContext().getRequestParameterMap();
         idMuebleSelec = Long.parseLong((String) map.get("muebleId"));
         promocion = new Promocion();
-        
         return "promocion";
     }
     
@@ -174,23 +200,5 @@ public class CatalogoBean implements Serializable
     public String guardarPromocion() {
         catalogo.agregarPromocionMueble(promocion, idMuebleSelec);
         return "catalogo";
-    }
-
-    public long getIdMuebleSelec() {
-        return idMuebleSelec;
-    }
-
-    public void setIdMuebleSelec(long idMuebleSelec) {
-        this.idMuebleSelec = idMuebleSelec;
-    }
-    
-    
-
-    public Promocion getPromocion() {
-        return promocion;
-    }
-
-    public void setPromocion(Promocion promocion) {
-        this.promocion = promocion;
-    }
+    }    
 }
