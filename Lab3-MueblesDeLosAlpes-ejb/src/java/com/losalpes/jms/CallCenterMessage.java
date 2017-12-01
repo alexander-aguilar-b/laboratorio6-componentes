@@ -23,8 +23,8 @@ import javax.jms.TextMessage;
  *
  * @author edgaguil
  */
-@MessageDriven(mappedName = "jms/cambioDeCargoTopic", activationConfig = {    
-    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/cambioDeCargoTopic"),        
+@MessageDriven(mappedName = "jms/promocionTopic", activationConfig = {    
+    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/promocionTopic"),        
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic")
 })
 public class CallCenterMessage implements MessageListener {

@@ -50,18 +50,22 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote,IServic
     @EJB
     private IServicioPersistenciaMockLocal persistencia;
     
-    /*
+    
     @Resource(mappedName="jms/promocionTopicFactory")
     private ConnectionFactory connectionFactory;
  
     @Resource(mappedName="jms/promocionTopic")
     private Topic topic;
-    */
+    
+    
+    /*
     @Resource(mappedName="jms/cambioDeCargoTopicFactory")
     private ConnectionFactory connectionFactory;
  
+    
     @Resource(mappedName="jms/cambioDeCargoTopic")
     private Topic topic;
+    */
     
     Promocion promocionEstablecida;
 
