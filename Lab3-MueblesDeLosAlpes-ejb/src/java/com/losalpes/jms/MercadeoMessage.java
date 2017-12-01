@@ -22,11 +22,8 @@ import javax.jms.TextMessage;
  *
  * @author edgaguil
  */
-@MessageDriven(mappedName = "jms/cambioDeCargoTopic", activationConfig = {
-    //@ActivationConfigProperty(propertyName = "clientId", propertyValue = "jms/promocionTopic"),
-    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/cambioDeCargoTopic"),
-    //@ActivationConfigProperty(propertyName = "subscriptionDurability", propertyValue = "Durable"),
-    //@ActivationConfigProperty(propertyName = "subscriptionName", propertyValue = "jms/promocionTopic"),
+@MessageDriven(mappedName = "jms/cambioDeCargoTopic", activationConfig = {    
+    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/cambioDeCargoTopic"),        
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic")
 })
 public class MercadeoMessage implements MessageListener {

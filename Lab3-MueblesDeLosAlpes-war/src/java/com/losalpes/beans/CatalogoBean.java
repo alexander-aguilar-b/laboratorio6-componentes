@@ -167,17 +167,8 @@ public class CatalogoBean implements Serializable
     public void limpiar()
     {
         mueble=new Mueble();
-    }
-    
-    public void eliminarMueble1(ActionEvent evento)
-    {
-        FacesContext context = FacesContext.getCurrentInstance();
-        Map map = context.getExternalContext().getRequestParameterMap();
-        long inventoryId = Long.parseLong((String) map.get("muebleId"));
-
-        catalogo.eliminarMueble(inventoryId);
-    }
-    
+    }  
+        
     /**
      * Crea una nueva promocion
      * @param evento

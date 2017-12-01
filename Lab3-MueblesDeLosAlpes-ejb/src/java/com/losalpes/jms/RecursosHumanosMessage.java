@@ -20,11 +20,8 @@ import javax.jms.TextMessage;
  *
  * @author edgaguil
  */
-@MessageDriven(mappedName = "jms/cambioDeCargoTopic", activationConfig = {
-    //@ActivationConfigProperty(propertyName = "clientId", propertyValue = "jms/cambioDeCargoTopic"),
-    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/cambioDeCargoTopic"),
-    //@ActivationConfigProperty(propertyName = "subscriptionDurability", propertyValue = "Durable"),
-    //@ActivationConfigProperty(propertyName = "subscriptionName", propertyValue = "jms/cambioDeCargoTopic"),
+@MessageDriven(mappedName = "jms/cambioDeCargoTopic", activationConfig = {    
+    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/cambioDeCargoTopic"),        
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic")
 })
 public class RecursosHumanosMessage implements MessageListener {

@@ -154,13 +154,11 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote,IServic
      * @param idMueble 
      */
     @Override
-    public void agregarPromocionMueble(Promocion promocion, long idMueble) {        
-        //List<Mueble> lista1 = this.darMuebles();
+    public void agregarPromocionMueble(Promocion promocion, long idMueble) {                
         Mueble mueble = (Mueble) persistencia.findById(Mueble.class, idMueble);
         mueble.setPromocion(promocion);
         persistencia.update(mueble);
-        promocionEstablecida = promocion;
-        //List<Mueble> lista2 = this.darMuebles(); 
+        promocionEstablecida = promocion;        
         
         try {
             publicarPromocion();
