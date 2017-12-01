@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/edgaguil/Dropbox/Alex/ECOS/Componentes/Laboratorios/Lab6/Cuso/laboratorio6/laboratorio6/laboratorio6/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-war/web/WEB-INF/faces-config.xml</file>
-            <file>file:/C:/Users/edgaguil/Dropbox/Alex/ECOS/Componentes/Laboratorios/Lab6/Cuso/laboratorio6/laboratorio6/laboratorio6/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-war/src/java/com/losalpes/beans/CarritoBean.java</file>
+            <file>file:/C:/Users/edgaguil/Dropbox/Alex/ECOS/Componentes/Laboratorios/Lab6/Cuso/laboratorio6/laboratorio6/laboratorio6/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-war/src/java/com/losalpes/beans/CatalogoBean.java</file>
+            <file>file:/C:/Users/edgaguil/Dropbox/Alex/ECOS/Componentes/Laboratorios/Lab6/Cuso/laboratorio6/laboratorio6/laboratorio6/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-war/web/promocion.xhtml</file>
+            <file>file:/C:/Users/edgaguil/Dropbox/Alex/ECOS/Componentes/Laboratorios/Lab6/Cuso/laboratorio6/laboratorio6/laboratorio6/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-war/src/java/com/losalpes/beans/VendedorBean.java</file>
+            <file>file:/C:/Users/edgaguil/Dropbox/Alex/ECOS/Componentes/Laboratorios/Lab6/Cuso/laboratorio6/laboratorio6/laboratorio6/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-war/web/catalogo.xhtml</file>
         </group>
     </open-files>
 </project-private>

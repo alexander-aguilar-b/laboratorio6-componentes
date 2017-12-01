@@ -209,7 +209,7 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote,IServic
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");        
         String msg = "Descripción: " + promocionEstablecida.getDescripcion() + "\n";
         msg += "Fecha Inicio: " + df.format(promocionEstablecida.getFechaInicio()) + "\n";
-        msg += "Salario: " + df.format(promocionEstablecida.getFechaFin()) + "\n";
+        msg += "Fecha Fin: " + df.format(promocionEstablecida.getFechaFin()) + "\n";
         TextMessage tm = session.createTextMessage();
         tm.setText(msg);
         return tm;
