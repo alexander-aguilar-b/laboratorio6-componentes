@@ -12,6 +12,7 @@
 package com.losalpes.servicios;
 
 import com.losalpes.entities.Mueble;
+import com.losalpes.entities.Promocion;
 import com.losalpes.excepciones.OperacionInvalidaException;
 import java.util.ArrayList;
 import java.util.List;
@@ -119,5 +120,15 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote,IServic
     {
         return persistencia.findAll(Mueble.class);
     }
-
+    
+    /**
+     * crea una promocion para un mueble seleccionado
+     * @param promocion
+     * @param idMueble 
+     */
+    @Override
+    public void agregarPromocionMueble(Promocion promocion, long idMueble) {        
+        Mueble mueble = (Mueble) persistencia.findById(Mueble.class, idMueble);
+        mueble.setPromocion(promocion);
+    }
 }

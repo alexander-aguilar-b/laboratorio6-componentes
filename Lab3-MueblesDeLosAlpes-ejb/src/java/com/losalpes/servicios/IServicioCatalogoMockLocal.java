@@ -13,6 +13,7 @@
 package com.losalpes.servicios;
 
 import com.losalpes.entities.Mueble;
+import com.losalpes.entities.Promocion;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -47,5 +48,6 @@ public interface IServicioCatalogoMockLocal
      * @param id Identificador único del mueble
      */
     public void removerEjemplarMueble(long id);
-
+    
+    public void agregarPromocionMueble(Promocion promocion, long idMueble);
 }

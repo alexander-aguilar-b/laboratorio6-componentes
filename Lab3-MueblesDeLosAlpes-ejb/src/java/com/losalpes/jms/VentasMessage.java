@@ -24,11 +24,11 @@ import javax.jms.TextMessage;
  *
  * @author edgaguil
  */
-@MessageDriven(mappedName = "jms/cambioDeCargoTopic", activationConfig = {
-    @ActivationConfigProperty(propertyName = "clientId", propertyValue = "RecursosHumanosMessage"),
-    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/cambioDeCargoTopic"),
-    @ActivationConfigProperty(propertyName = "subscriptionDurability", propertyValue = "Durable"),
-    @ActivationConfigProperty(propertyName = "subscriptionName", propertyValue = "jms/cambioDeCargoTopic"),
+@MessageDriven(mappedName = "jms/promocionTopic", activationConfig = {
+    //@ActivationConfigProperty(propertyName = "clientId", propertyValue = "jms/promocionTopic"),
+    @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "jms/promocionTopic"),
+    //@ActivationConfigProperty(propertyName = "subscriptionDurability", propertyValue = "Durable"),
+    //@ActivationConfigProperty(propertyName = "subscriptionName", propertyValue = "jms/promocionTopic"),
     @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic")
 })
 public class VentasMessage implements MessageListener {

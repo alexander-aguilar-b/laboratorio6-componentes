@@ -139,6 +139,12 @@
                         <h:outputText value="#{file.tipo}" />
                     </p:column>
                     
+                    <p:column headerText="Promocion">
+                        <p:commandButton action="#{catalogoBean.crearPromocion}" value="Crear Promocion">
+                            <f:param name="muebleId" value="#{file.referencia}" />
+                        </p:commandButton>
+                    </p:column>
+                    
                      <p:column headerText="Eliminar">
                          <h:commandLink actionListener="#{catalogoBean.eliminarMueble}"
                                              value="Eliminar" >
